@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Book</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0;">
+
+
+    <nav style="background-color: #333; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <p style="color:white; margin:0;">BookStore</p>
+        </div>
+        <div>
+            <a href="{% url 'admin_login' %}" style="color: #fff; text-decoration: none; margin-right: 15px;">← Back</a>
+            <a href="" style="color: #fff; text-decoration: none;">Logout</a>
+        </div>
+    </nav>
+
+
+    <div style="max-width: 600px; margin: 40px auto; background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h1 style="color: #333; text-align: center; margin-bottom: 30px;">Add a New Book</h1>
+
+        <form method="POST" action ="" style="display: flex; flex-direction: column; gap: 15px;">
+            {% csrf_token %}
+            
+            <label for="id_title" style="font-weight: bold; color: #333;">Title</label>
+            {{ form1.title }}
+            {% comment %} <input type="text" name="title" required> {% endcomment %}
+
+            <label for="id_author" style="font-weight: bold; color: #333;">Author</label>
+            {{ form1.author }}
+            {% comment %} <input type="text" name="author" required> {% endcomment %}
+
+            <label for="id_published_date" style="font-weight: bold; color: #333;">Published Date</label>
+            {{ form1.published_date }}
+            {% comment %} <input type="date" name="published_date" required> {% endcomment %}
+            
+            <label for="id_category" style="font-weight: bold; color: #333;">Category</label>
+            {{ form1.category }}
+            {% comment %} <input type="tex" name="category" required> {% endcomment %}
+
+
+            <button type="submit" name = "Book_submit" style="background-color: #0077cc; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                🗑️ Delete Book
+            </button>
+
+
+            
+        </form>
+    </div>
+
+</body>
+</html>

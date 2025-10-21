@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title }}</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px;">
+
+    <div style="max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        <h1 style="color: #333; margin-top: 0;">{{ book.title }}</h1>
+        <p style="color: #555;"><strong>Author:</strong> {{ book.author }}</p>
+        <p style="color: #555;"><strong>Published Date:</strong> {{ book.published_date }}</p>
+
+        <a href="/booksapp/list/" style="display: inline-block; margin-top: 15px; text-decoration: none; color: #0077cc;">← Back to all books</a>
+    </div>
+
+</body>
+</html>

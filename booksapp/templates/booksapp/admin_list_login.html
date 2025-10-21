@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book List</title>
+</head>
+
+<nav style="background-color: #333; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+        <p style="color:white;">BookStore</p>
+    </div>
+    <div>
+        <a href="{% url 'login' %}" style="color: #fff; text-decoration: none;">Logout</a>
+    </div>
+</nav>
+
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px;">
+
+    <h1 style="color: #333; text-align: center;">Welcome To Admin Panel</h1>
+
+    <div style="display:flex; justify-content:center;">
+    <div style="text-align: center; margin: 20px;">
+    <a href="{% url 'create' %}" 
+       style="background-color: #0077cc; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+        + Add New Book
+    </a>
+    </div>
+    <div style="text-align: center; margin: 20px;">
+    <a href="{% url 'update_s' %}" 
+       style="background-color: #0077cc; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+        🚀 Update
+    </a>
+    </div>
+    <div style="text-align: center; margin: 20px;">
+    <a href="{% url 'remove_s' %}" 
+       style="background-color: #0077cc; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+        ❌ Remove
+    </a>
+    </div>
+    </div>
+
+
+
+
+    <ul style="list-style: none; padding: 0; max-width: 600px; margin: auto;">
+        {% for category in categories %}
+            <li style="background-color: #eee; margin-bottom: 20px; padding: 10px; border-radius: 5px;">
+                <h2 style="color: #333;">{{ forloop.counter }}. {{ category.name }}</h2>
+
+                {% if category.books.all %}
+                    <ul style="list-style: none; padding-left: 20px;">
+                        {% for book in category.books.all %}
+                            <li style="background-color: #fff; margin-bottom: 10px; padding: 15px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                                <a href="{% url 'book_detail' book.id %}" style="text-decoration: none; color: #0077cc; font-weight: bold;">
+                                    {{ forloop.counter }}. {{ book.title }}
+                                </a>
+                                <p style="margin: 5px 0 0; color: #555;">by {{ book.author }} ({{ book.published_date }})</p>
+                            </li>
+                        {% empty %}
+                            <li style="color: #777;">No books in this category.</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p style="color: #777;">No books in this category.</p>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li style="text-align: center; color: #777;">No categories available.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

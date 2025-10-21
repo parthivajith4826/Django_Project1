@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0;">
+
+    <!-- Navbar -->
+    <nav style="background-color: #333; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <a href="" style="color: #fff; text-decoration: none; font-size: 18px; font-weight: bold;">BookStore</a>
+        </div>
+        <div>
+            <a href="{% url 'book_list' %}" style="color: #fff; text-decoration: none; margin-right: 15px;">Home</a>
+            {% comment %} <a href="" style="color: #fff; text-decoration: none;">Sign Up</a> {% endcomment %}
+        </div>
+    </nav>
+
+    <div style="max-width: 400px; margin: 50px auto; background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h2 style="text-align: center; color: #333;">Create an Account</h2>
+ 
+        <form method="POST" action="" style="display: flex; flex-direction: column; gap: 15px;">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <label for="id_email">Email</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+
+            <label for="id_password">Password</label>
+            {{ form.password }}
+            {{ form.password.errors }}
+            
+
+            <button type="submit" style="background-color: #0077cc; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
+                Sign Up
+            </button>
+        </form>
+
+        <p style="text-align: center; margin-top: 15px; color: #555;">
+            Already have an account?
+            <a href="{% url 'login' %}" style="color: #0077cc; text-decoration: none;">Login</a>
+        </p>
+    </div>
+
+</body>
+</html>
